@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0e11">
+
+  <title>QingMarket - Crypto Market</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    <div class="logo-icon">₿</div>
+    <div>
+      <strong>QingMarket</strong>
+      <span>Crypto Market</span>
+    </div>
+  </div>
+
+  <nav>
+    <a class="active" href="#">Market</a>
+    <a href="#">Trending</a>
+    <a href="#">Gainers</a>
+    <a href="#">Watchlist</a>
+  </nav>
+
+  <button class="search-btn" onclick="openSearch()">
+    <span>⌕</span>
+  </button>
+
+</header>
+
+
+<main>
+
+  <!-- GLOBAL MARKET -->
+  <section class="market-overview">
+
+    <div class="overview-card">
+      <span>Market Cap</span>
+      <strong id="globalMarketCap">$--</strong>
+      <small id="marketCapChange">Loading...</small>
+    </div>
+
+    <div class="overview-card">
+      <span>24h Volume</span>
+      <strong id="globalVolume">$--</strong>
+      <small>Global Market</small>
+    </div>
+
+    <div class="overview-card">
+      <span>BTC Dominance</span>
+      <strong id="btcDominance">--%</strong>
+      <small>Bitcoin</small>
+    </div>
+
+    <div class="overview-card">
+      <span>Cryptocurrencies</span>
+      <strong id="coinCount">--</strong>
+      <small>Tracked assets</small>
+    </div>
+
+  </section>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div>
+      <div class="badge">● LIVE MARKET</div>
+
+      <h1>
+        Cryptocurrency<br>
+        <span>Market Overview</span>
+      </h1>
+
+      <p>
+        Pantau harga, market cap, volume dan pergerakan
+        cryptocurrency secara real-time.
+      </p>
+
+      <button class="primary-btn" onclick="scrollToMarket()">
+        Explore Market →
+      </button>
+    </div>
+
+    <div class="hero-chart">
+      <div class="chart-line"></div>
+      <div class="chart-grid"></div>
+      <div class="btc-symbol">₿</div>
+    </div>
+
+  </section>
+
+
+  <!-- TRENDING -->
+  <section class="section">
+
+    <div class="section-title">
+      <div>
+        <span class="section-label">DISCOVER</span>
+        <h2>Trending Coins</h2>
+      </div>
+
+      <button onclick="loadCoins()">↻ Refresh</button>
+    </div>
+
+    <div id="trendingCoins" class="trending-grid">
+      <div class="loading">Loading market...</div>
+    </div>
+
+  </section>
+
+
+  <!-- MARKET -->
+  <section class="section" id="market">
+
+    <div class="section-title">
+
+      <div>
+        <span class="section-label">MARKET</span>
+        <h2>Cryptocurrency Prices</h2>
+      </div>
+
+      <div class="market-actions">
+
+        <button class="filter active" onclick="filterCoins('all', this)">
+          All
+        </button>
+
+        <button class="filter" onclick="filterCoins('gainers', this)">
+          Gainers
+        </button>
+
+        <button class="filter" onclick="filterCoins('losers', this)">
+          Losers
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <span>⌕</span>
+
+      <input
+        type="text"
+        id="coinSearch"
+        placeholder="Search cryptocurrency..."
+        oninput="searchCoins()"
+      >
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>#</th>
+            <th>Asset</th>
+            <th>Price</th>
+            <th>1h</th>
+            <th>24h</th>
+            <th>7d</th>
+            <th>Market Cap</th>
+            <th>Volume 24h</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="coinTable">
+
+          <tr>
+            <td colspan="8" class="loading">
+              Loading cryptocurrency data...
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- SEARCH MODAL -->
+
+<div id="searchModal" class="modal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeSearch()">×</button>
+
+    <h2>Search Crypto</h2>
+
+    <input
+      id="modalSearch"
+      type="text"
+      placeholder="Bitcoin, Ethereum, Solana..."
+      oninput="modalSearchCoins()"
+    >
+
+    <div id="modalResults"></div>
+
+  </div>
+
+</div>
+
+
+<footer>
+
+  <div class="footer-logo">
+    QingMarket
+  </div>
+
+  <p>
+    Crypto market dashboard built with HTML, CSS & JavaScript.
+  </p>
+
+  <span>
+    Market data provided by CoinPaprika
+  </span>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
